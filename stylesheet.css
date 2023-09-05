@@ -1,7 +1,6 @@
 /* Written Code */
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: #ffffff;
 }
 h1 {
     font-size: 22px;
@@ -48,11 +47,16 @@ html {
     background-color: #020659;
     
 }
-nav {
+/* nav {
     width: 100%;
     position: absolute;
     top: 0;
-    }
+    } */
+
+nav > ul {
+    width: 100%;
+}
+
 nav h2 {
     visibility: hidden;
     height: 1px;
@@ -78,13 +82,34 @@ header {
 }
 main {
     background-color: #ffffff;
+    max-width: 65%;
  }
- #playlists{
+ /* #playlists{
     background-color: #0D8DF8;
     overflow: scroll;
     overflow-x: auto;
+ } */
+
+ section > h2 {
+    font-weight: bold;
+    padding: 1rem 1rem 1rem 2rem;
  }
- #curated {
+
+ #playlists-box {
+    display: flex;
+    flex-direction: row;
+ }
+
+ #playlists-header-box {
+    display: flex;
+    flex-direction: row;
+ }
+
+ #playlists-box > section {
+    width: 50%;
+ }
+ 
+ #curated .scroll-vertical {
     background-color: #020873;
  }
 a {
@@ -151,24 +176,39 @@ table {
 
 
 /* Scroll Features CSS */
-.scroll {
-    display: flex;
-    grid-template-columns: repeat (5, 1fr);
+.scroll, .scroll-vertical {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     overflow-x: auto;
     overflow-y: hidden;
 }
-.scroll section {
+.scroll section, .scroll-vertical section {
     margin: 10px;
     position: relative;
 }
-.scroll div {
-    position: absolute;
+.scroll div, .scroll-vertical div {
     top: 251px;
     background-color: rgba(255,255,255,.75);
     padding: 5px;
-    height: 50px;
-    width: 350px;
+    height: 117px;
+    width: 100%;
 }
+
+.scroll-vertical {
+    grid-template-columns: repeat(1, 100%);
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 500px
+}
+
+.scroll-vertical section {
+    width: 100%;
+}
+
+#playlists .scroll-vertical {
+    background-color: #0D8DF8;
+}
+
 dl {
     display:flex;
 }
@@ -189,7 +229,11 @@ audio {
     width: 150px;
     display: block;
     text-align: center;
-    margin: 10px 0 30px 32px;
+}
+.more-box {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
 }
 .more:hover {
     background-color: #020659;
@@ -293,7 +337,7 @@ input:checked ~ label:not(.steps) span:before, input:checked ~ label:not(.steps)
         position: absolute;
         top: 0;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 0.17fr 0.12fr 0.12fr 0.12fr 0.12fr;
     }
     label span, input {
         display: none;
